@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "MiIlktZcOSFn+LP7pDyiiMkJ8stQwpM/wyYVry1pGw0U5IHojwy9EOOHlrjX1FFp18G7U9BHf9cT0D+eI7u3ew==",
+  "dgSpecHash": "TSVbKaYfds1GaIgJKmGFJfbfKzQI4XdFuoxcsSuhiR2KLqWG2i5ptAtQwzTU4bDHWsTBvx5NAb9+CCSxpcM3Ng==",
   "success": true,
   "projectFilePath": "D:\\Sanjoy\\MvcMovie\\MvcMovie.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.0\\microsoft.aspnetcore.cryptography.internal.3.1.0.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.0\\microsoft.aspnetcore.cryptography.keyderivation.3.1.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.0\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.28\\microsoft.aspnetcore.mvc.razor.extensions.3.1.28.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.28\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.28.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
@@ -35,6 +38,8 @@
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.30\\microsoft.extensions.dependencyinjection.3.1.30.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.30\\microsoft.extensions.dependencyinjection.abstractions.3.1.30.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.1.25\\microsoft.extensions.dependencymodel.3.1.25.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.extensions.identity.core\\3.1.0\\microsoft.extensions.identity.core.3.1.0.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.extensions.identity.stores\\3.1.0\\microsoft.extensions.identity.stores.3.1.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.extensions.logging\\3.1.30\\microsoft.extensions.logging.3.1.30.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.30\\microsoft.extensions.logging.abstractions.3.1.30.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.extensions.options\\3.1.30\\microsoft.extensions.options.3.1.30.nupkg.sha512",
