@@ -428,3 +428,5 @@ D:\Sanjoy\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Delete.cshtml.g.cs
 D:\Sanjoy\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Details.cshtml.g.cs
 D:\Sanjoy\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Edit.cshtml.g.cs
 D:\Sanjoy\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Index.cshtml.g.cs
+D:\Sanjoy\MvcMovie\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Sanjoy\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Account\SignUP.cshtml.g.cs
