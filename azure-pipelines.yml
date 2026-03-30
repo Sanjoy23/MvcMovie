@@ -13,7 +13,7 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '3.1.x'   # 🔥 Changed
+    version: '3.1.x'
 
 - script: dotnet restore
   displayName: Restore
@@ -27,18 +27,18 @@ steps:
 - powershell: |
     Import-Module WebAdministration
 
-    if (Get-Website -Name "MvcMovie" -ErrorAction SilentlyContinue) {
-        Stop-WebSite -Name "MvcMovie"
+    if (Get-Website -Name "default" -ErrorAction SilentlyContinue) {
+        Stop-WebSite -Name "default"
     }
 
     Remove-Item "$(deployPath)\*" -Recurse -Force -ErrorAction SilentlyContinue
 
     Copy-Item "$(Build.ArtifactStagingDirectory)\*" "$(deployPath)" -Recurse
 
-    if (-not (Get-Website -Name "MvcMovie" -ErrorAction SilentlyContinue)) {
-        New-Website -Name "MvcMovie" -PhysicalPath "$(deployPath)" -Port 80
+    if (-not (Get-Website -Name "default" -ErrorAction SilentlyContinue)) {
+        New-Website -Name "default" -PhysicalPath "$(deployPath)" -Port 80
     }
 
-    Start-WebSite -Name "MvcMovie"
+    Start-WebSite -Name "default"
 
   displayName: Deploy to IIS
