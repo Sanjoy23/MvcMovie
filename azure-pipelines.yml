@@ -1,43 +1,44 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  name: 'MvcMovie'
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  deployPath: 'C:\inetpub\wwwroot\MyApp'
 
 steps:
-- task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
+- task: UseDotNet@2
   inputs:
-    restoreSolution: '$(solution)'
+    packageType: 'sdk'
+    version: '3.1.x'   # 🔥 Changed
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+- script: dotnet restore
+  displayName: Restore
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-- task: CopyFiles@2
-  inputs:
-    Contents: '**/*.war'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'warfile'
-    publishLocation: 'Container'
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: Build
+
+- script: dotnet publish --configuration $(buildConfiguration) --framework netcoreapp3.1 --output $(Build.ArtifactStagingDirectory)
+  displayName: Publish
+
+- powershell: |
+    Import-Module WebAdministration
+
+    if (Get-Website -Name "MvcMovie" -ErrorAction SilentlyContinue) {
+        Stop-WebSite -Name "MvcMovie"
+    }
+
+    Remove-Item "$(deployPath)\*" -Recurse -Force -ErrorAction SilentlyContinue
+
+    Copy-Item "$(Build.ArtifactStagingDirectory)\*" "$(deployPath)" -Recurse
+
+    if (-not (Get-Website -Name "MvcMovie" -ErrorAction SilentlyContinue)) {
+        New-Website -Name "MvcMovie" -PhysicalPath "$(deployPath)" -Port 80
+    }
+
+    Start-WebSite -Name "MvcMovie"
+
+  displayName: Deploy to IIS
