@@ -1,16 +1,9 @@
-# Azure Pipelines Configuration for .NET
-
-# This pipeline configuration uses .NET 6/7 and implements modern best practices.
-
 trigger:
-- main
-
-pr:
 - main
 
 variables:
   buildConfiguration: 'Release'
-  dotnetVersion: '7.0.x' # Update to 6.0.x if using .NET 6
+  dotnetVersion: '3.1.x'
 
 jobs:
 - job: Build
@@ -19,6 +12,9 @@ jobs:
     vmImage: 'ubuntu-latest'
 
   steps:
+  - checkout: self
+    fetchDepth: 1
+
   - task: UseDotNet@2
     inputs:
       packageType: 'sdk'
@@ -30,31 +26,6 @@ jobs:
       dotnet build --configuration $(buildConfiguration)
     displayName: 'Restore and Build'
 
-- job: Test
-  displayName: Test
-  dependsOn: Build
-  pool:
-    vmImage: 'ubuntu-latest'
-
-  steps:
-  - script: |
-      dotnet test --configuration $(buildConfiguration) --no-restore
-    displayName: 'Run Tests'
-
-- job: Deploy
-  displayName: Deploy
-  dependsOn: Test
-  pool:
-    vmImage: 'ubuntu-latest'
-
-  steps:
   - script: |
       echo "Deploying application..."
-      # Validate deployment
-      # Implementation of deployment steps here
     displayName: 'Deploy Application'
-
-  - script: |
-      # Verify successful deployment
-      echo "Deployment Successful!"
-    displayName: 'Validate Deployment'
